@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VITCart</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.0/css/all.css" integrity="sha384-OLYO0LymqQ+uHXELyx93kblK5YIS3B2ZfLGBmsJaUyor7CpMTBsahDHByqSuWW+q" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="grid-container">
+        <nav class="nav">
+            <div class="brand">
+                <button onclick="openMenu()">
+                    &#9776;
+                </button>
+                <a href="/">VITCart</a>
+            </div>
+            <form class="search" action="/search" method="POST">
+                <input type="text" name="search" placeholder="Search For A Product" required>
+                <button>Search</button>
+            </form>
+            <div class="leftMenu">
+				<% if(!currentUser){ %>
+                <a class="nav-links" href="/register">Sign Up<i class="fas fa-sign-in-alt"></i></a>
+				<% }else{ %>
+                <a class="nav-links" href="/logout">Logout<i class="fas fa-sign-in-alt"></i></a>
+				<% } %>
+                <a class="nav-links" href="/cart">Cart<i class="fas fa-shopping-cart"><span id='lblCartCount'> 5 </span></i></a>
+            </div>
+        </nav>
+
+        <aside class="sidebar">
+			<% if(currentUser){ %>
+				<div class="profile">
+					<i class="fas fa-user-circle"></i>
+					<h2>Howdy <%= currentUser.username %>!</h2>
+					<% if(currentUser && !currentUser.isAdmin && !currentUser.isSeller){ %>
+						<a href="/manage-account/<%= currentUser._id %>" class="account">Your Account</a>
+					<% } %>
+					<% if(currentUser && currentUser.isAdmin && !currentUser.isSeller){ %>
+						<a href="/manage-site/<%= currentUser._id %>" class="account">Manage Site</a>
+					<% } %>	
+					<% if(currentUser && currentUser.isSeller && !currentUser.isAdmin){ %>
+						<a href="/manage-shop/<%= currentUser._id %>" class="account">Manage Shop</a>
+					<% } %>
+				</div>
+			<% } %>	
+            <h3>Shopping Categories</h3>
+            <button class="sidebar-close-button" onclick="closeMenu()">X</button>		
+            <ul>
+                <li>
+                    <a href="/category/men">Men<i class="fas fa-chevron-right"></i></a>
+                </li>
+                <li>
+                    <a href="/category/women">Women<i class="fas fa-chevron-right"></i></a>
+                </li>
+                <li>
+                    <a href="/category/grocery">Grocery<i class="fas fa-chevron-right"></i></a>
+                </li>
+                <li>
+                    <a href="/category/stationery">Stationery<i class="fas fa-chevron-right"></i></a>
+                </li>
+				<li>
+                    <a href="/category/used">Used Products<i class="fas fa-chevron-right"></i></a>
+                </li>
+				<li>
+                    <a href="/category/rent">Rent<i class="fas fa-chevron-right"></i></a>
+                </li>
+            </ul>
+        </aside>
+		
+		<script type="text/javascript">
+			var search = document.getElementsByName("search").value;
+		</script>
+
+        <main class="main">

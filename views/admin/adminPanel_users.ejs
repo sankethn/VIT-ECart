@@ -1,0 +1,139 @@
+<%- include("../partials/header") %>
+
+	<div class="menu">
+		<ul class="options">
+			<li><a href="/manage-site/<%= currentUser._id %>">Products</a></li>
+			<li class="selected"><a href="/manage-site/<%= currentUser._id %>/users">Users</a></li>
+		</ul>
+		<div class="show">
+			<h1>
+				Users
+			</h1>
+			<table style="border: 1px black solid; margin: 10px; width: 97%;">
+				<h1>
+					Administrator
+				</h1>
+				<thead>
+					<tr>
+						<th class="head">S.no</th>
+						<th class="head">User ID</th>
+						<th class="head">Username</th>
+						<th class="head">Email</th>
+						<th class="head">Contact Number</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% var i = 0; %>
+					<% user.forEach(function(user){ %>
+						<% if(user.isAdmin){ i++;%>
+							<tr>
+								<td class="tail">
+									<%= i %>
+								</td>
+								<td class="tail">
+									<%= user._id %>
+								</td>
+								<td class="tail">
+									<%= user.username %>
+								</td>
+								<td class="tail">
+									<%= user.email %>
+								</td>
+								<td class="tail">
+									<%= user.phNumber %>
+								</td>
+							</tr>
+						<% } %>
+					<% }) %>
+				</tbody>
+			</table>
+			<table style="border: 1px black solid; margin: 10px; width: 97%;">
+				<h1>
+					Buyers
+				</h1>
+				<thead>
+					<tr>
+						<th class="head">S.no</th>
+						<th class="head">User ID</th>
+						<th class="head">Username</th>
+						<th class="head">Email</th>
+						<th class="head">Contact Number</th>
+						<th class="head">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% var i = 0; %>
+					<% user.forEach(function(user){ %>
+						<% if(!user.isAdmin && !user.isSeller){ i++;%>
+							<tr>
+								<td class="tail">
+									<%= i %>
+								</td>
+								<td class="tail">
+									<%= user._id %>
+								</td>
+								<td class="tail">
+									<%= user.username %>
+								</td>
+								<td class="tail">
+									<%= user.email %>
+								</td>
+								<td class="tail">
+									<%= user.phNumber %>
+								</td>
+								<td class="tail">
+									<a href="/manage-site/<%= currentUser._id %>/users/<%= user._id %>/edit"><i class="fas fa-edit ti"></i></a>
+									<a href="/manage-site/<%= currentUser._id %>/users/<%= user._id %>/delete"><i class="fas fa-trash-alt ti"></i></a>
+								</td>
+							</tr>
+						<% } %>
+					<% }) %>
+				</tbody>
+			</table>
+			<table style="border: 1px black solid; margin: 10px; width: 97%;">
+				<h1>
+					Sellers
+				</h1>
+				<thead>
+					<tr>
+						<th class="head">S.no</th>
+						<th class="head">User ID</th>
+						<th class="head">Username</th>
+						<th class="head">Email</th>
+						<th class="head">Contact Number</th>
+						<th class="head">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% var i = 0; %>
+					<% user.forEach(function(user){ %>
+						<% if(user.isSeller){ i++;%>
+							<tr>
+								<td class="tail">
+									<%= i %>
+								</td>
+								<td class="tail">
+									<%= user._id %>
+								</td>
+								<td class="tail">
+									<a href="/manage-site/<%= currentUser._id %>/users/<%= user._id %>/products"><%= user.username %></a>
+								</td>
+								<td class="tail">
+									<%= user.email %>
+								</td>
+								<td class="tail">
+									<%= user.phNumber %>
+								</td>
+								<td class="tail">
+									<a href="/manage-site/<%= currentUser._id %>/users/<%= user._id %>/edit"><i class="fas fa-edit ti"></i></a>
+									<a href="/manage-site/<%= currentUser._id %>/users/<%= user._id %>/delete"><i class="fas fa-trash-alt ti"></i></a>
+								</td>
+							</tr>
+						<% } %>
+					<% }) %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+<%- include("../partials/footer") %>

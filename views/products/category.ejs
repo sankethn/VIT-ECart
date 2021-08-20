@@ -1,0 +1,30 @@
+<%- include("../partials/header") %>
+			<% if(product == undefined){ %>
+			<h1>Oops no product found!</h1>
+			<% } else{ %>
+				<ul class="products-category">
+					<% product.forEach(function(products){ %>
+						<li>
+							<div class="product">
+								<img class="product-image" src="<%= products.image %>" alt="image">
+								<div class="product-info">
+									<div class="product-name">
+										<a href="/product/<%= products._id%>"><%= products.name %></a>
+									</div>
+									<div class="product-name">
+										<p><%= products.category%></p>
+									</div>
+									<% if(products.category == 'rent'){ %>
+										<div class="product-price">₹ <%= products.price %>/day</div>
+									<% } else{ %>
+										<div class="product-price">₹ <%= products.price %></div>
+									<% } %>
+									<div class="product-rating"><%= products.rating %></div>
+									<button>Add To Cart</button>
+								</div>
+							</div>
+						</li>
+					<% }) %>
+				</ul>
+			<% } %>
+<%- include("../partials/footer") %>

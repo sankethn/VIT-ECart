@@ -1,0 +1,98 @@
+<%- include("../partials/header") %>
+            
+	<img src="https://www.lifeline24.co.uk/wp-content/uploads/2020/04/Grocery_Online.png" width="1520px" height="500px">
+
+	<div class="type">
+		<button onClick="location.href= '/buyNew'" class="typeBtn">BUY NEW</button> 
+		<button onClick="location.href= '/buyUsed'" class="typeBtn">BUY USED</button> 
+		<button onClick="location.href= '/buyRent'" class="typeBtn">RENT</button> 
+	</div>
+
+		<p class="pHead">Today's Offers</p>
+		<ul class="products-index">
+			<% products.slice(-6).forEach(function(product){ %>
+				<li>
+					<div class="product">
+						<img class="product-image" src="<%= product.image %>" alt="image">
+						<div class="product-info">
+							<div class="product-name">
+								<a href="/product/<%= product._id%>"><%= product.name %></a>
+							</div>
+							<div class="product-name">
+								<p><%= product.category%></p>
+							</div>
+							<% if(product.category == 'rent'){ %>
+								<div class="product-price">₹ <%= product.price %>/day</div>
+							<% } else{ %>
+								<div class="product-price">₹ <%= product.price %></div>
+							<% } %>
+							<div class="product-rating"><%= product.rating %></div>
+							<button onclick="location.href='/product/<%= product._id %>/addCart'">Add To Cart</button>
+						</div>
+					</div>
+				</li>
+			<% }) %>
+		</ul>
+
+	<% if(currentUser){ %>
+		<% if(currentUser.username = "John"){ %>
+			<!-- <p class="pHead">Recommended for you</p>
+			<ul class="products-index">
+				<% rec.forEach(function(product){ %>
+					<li>
+						<div class="product">
+							<img class="product-image" src="<%= product.image %>" alt="image">
+							<div class="product-info">
+								<div class="product-name">
+									<a href="/product/<%= product._id%>"><%= product.name %></a>
+								</div>
+								<div class="product-name">
+									<p><%= product.category%></p>
+								</div>
+								<% if(product.category == 'rent'){ %>
+									<div class="product-price">₹ <%= product.price %>/day</div>
+								<% } else{ %>
+									<div class="product-price">₹ <%= product.price %></div>
+								<% } %>
+								<div class="product-rating"><%= product.rating %></div>
+								<button onclick="location.href='/product/<%= product._id %>/addCart'">Add To Cart</button>
+							</div>
+						</div>
+					</li>
+				<% }) %>
+			</ul> -->
+		<% } %>
+	<% } %>
+
+
+	<h1 class="galleryHead">Online Supermarket</h1>
+	<div class="box">
+		<img class="img1" src="https://article.images.consumerreports.org/f_auto/prod/content/dam/CRO%20Images%202019/Money/04April/CR-Money-InlineHero-BestGroceryStoresandSupermarkets-4-19">
+		<img class="img2" src="https://www.nzherald.co.nz/resizer/qGn9RxRZHRsWjZ-AjAVkKs8Z2AM=/360x384/filters:quality(70)/arc-anglerfish-syd-prod-nzme.s3.amazonaws.com/public/TO6OMMCEHNCBJPCOVMH4CO43O4.jpg">
+		<img class="img3" src="https://workersfirst.nz/wp-content/uploads/2019/09/nrd-D6Tu_L3chLE-unsplash-1024x768.jpg">
+		<img class="img4" src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX30126204.jpg">
+		<img class="img5" src="https://ichef.bbci.co.uk/news/1024/cpsprodpb/12E24/production/_110984377_supermarketgettyimages-1142988081.jpg">
+		<img src="https://www.irishtimes.com/polopoly_fs/1.4311865.1595514172!/image/image.jpg_gen/derivatives/ratio_1x1_w1200/image.jpg">
+	</div>
+
+	<h1 class="ourBrands">Our Brands</h1>
+	<div class="container-index">
+		<a href="">Nivea</a>
+		<a href="">POND'S</a>
+		<a href="">VIP</a>
+		<a href="">Garnier</a>
+		<a href="">Maybelline</a>
+		<a href="">Lakme</a>
+		<a href="">Syska</a>
+		<a href="">Philips</a>
+		<a href="">Lay's</a>
+		<a href="">Coca Cola</a>
+		<a href="">Cello</a>
+		<a href="">Mi</a>
+	</div>
+<script>
+console.log(
+<%- JSON.stringify(recommendedProducts, null, 4) %>
+)
+</script>
+<%- include("../partials/footer") %>

@@ -1,0 +1,63 @@
+<%- include("../partials/header") %>
+
+	<div class="menu">
+		<ul class="options">
+			<li><a href="/manage-shop/<%= seller._id %>">Account</a></li>
+			<li class="selected"><a href="/manage-shop/<%= seller._id %>/products">Products</a></li>
+			<li><a href="/manage-shop/<%= seller._id %>/orders">Orders</a></li>
+		</ul>
+		<div class="show">
+			<h1>
+				Products
+			</h1>
+			<button class="btn" onclick="window.location.href='/manage-shop/<%= seller._id %>/products/addProduct'">Add Product</button>
+			<table style="border: 1px black solid; margin: 10px; width: 97%;">
+				<thead>
+					<tr>
+						<th class="head">S.no</th>
+						<th class="head">Name</th>
+						<th class="head">Category</th>
+						<th class="head">Image</th>
+						<th class="head">Price</th>
+						<th class="head">Stock</th>
+						<th class="head">Description</th>
+						<th class="head">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% var i = 0; %>
+					<% product.forEach(function(product){i++; %>
+						<tr>
+							<td class="tail">
+								<%= i %>
+							</td>
+							<td class="tail">
+								<%= product.name %>
+							</td>
+							<td class="tail">
+								<%= product.category %>
+							</td>
+							<td class="tail">
+								<img src="<%= product.image %>">
+							</td>
+							<td class="tail">
+								₹<%= product.price %>
+							</td>
+							<td class="tail">
+								<%= product.stock %>
+							</td>
+							<td class="tail">
+								<%= product.description %>
+							</td>
+							<td class="tail">
+								<a href="/manage-shop/<%= seller._id %>/products/<%= product._id %>/edit"><i class="fas fa-edit ti"></i></a>
+								<a href="/manage-shop/<%= seller._id %>/products/<%= product._id %>/delete"><i class="fas fa-trash-alt ti"></i></a>
+							</td>
+						</tr>
+					<% }) %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+<%- include("../partials/footer") %>

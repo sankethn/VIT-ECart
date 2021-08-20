@@ -1,0 +1,15 @@
+<%- include("../partials/header") %>
+
+	<div class="menu">
+		<ul class="options">
+			<li><a href="/manage-account/<%= currentUser._id %>">Account</a></li>
+			<li class="selected"><a href="/manage-account/<%= currentUser._id %>/orders">Orders History</a></li>
+		</ul>
+		<div class="show">
+			<h1>
+				No Orders Yet
+			</h1>
+		</div>
+	</div>
+
+<%- include("../partials/footer") %>

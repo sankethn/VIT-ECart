@@ -1,0 +1,64 @@
+<%- include("../partials/header") %>
+
+	<div class="main-click">
+		<div class="product-image-click">
+			<img src="<%= product.image %>">
+		</div>
+		<div class="product-details-click">
+			<h1 class="product-name-click"><%= product.name %></h1>
+			<label class="product-name-label">Category:</label>
+			<p class="product-name-category"><%= product.category %></p>
+			<% if(product.category == 'rent'){ %>
+				<h3 class="product-price-click">₹ <%= product.price %>/day</h3>
+			<% } else{ %>
+				<h3 class="product-price-click">₹ <%= product.price %></h3>
+			<% } %>
+			<div class="product-description-click">
+				<label>Description</label>
+				<p><%= product.description %></p>
+			</div>
+			<div class="status-click">
+				<label>Status</label>
+				<% if(product.stock > 0){  %>
+					<p>In Stock</p>
+				<% } else { %>
+					<p>Out of stock</p>
+				<% } %>
+			</div>
+			<% if(currentUser){ %>
+				<div class="qty-click">
+					<label>Qty</label>
+					<form action="/product/<%= product._id %>/<%= currentUser._id %>/addCart" method="POST">
+					<select name="quantity">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+					</select>
+					<button>Add to cart</button>
+					</form>
+				</div>
+			<% }else{ %>
+				<label>Login to add to cart</label>
+			<% } %>
+		</div>
+
+		<div class="container-click">
+			<h1>Reviews</h1>
+			<div class="review-click">
+				<div class="addReview">
+					<h3>Review this product</h3>
+					<button onClick="location.href= '/product/<%= product._id%>/addReview'">Write a review</button>
+				</div>
+			</div>
+			<div class="box-click">
+				<% product.reviews.forEach(function(review){ %>
+					<h3 class="name"><%= review.author.username %></h3>
+					<p id="star"><%= review.rating %> stars</p>
+					<p><%= review.text %></p>
+					<hr>
+				<% }) %>
+			</div>
+		</div>
+	</div>
+
+<%- include("../partials/footer") %>

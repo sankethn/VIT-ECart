@@ -1,0 +1,47 @@
+<%- include("partials/header") %>
+
+	<div class="container-cart">
+		<div class="cart-cart">
+			<table>
+				<tr>
+					<td class="product-cart thead">Product Details</td>
+					<td class="qty-cart thead">Qty</td>
+					<td class="price-cart thead">Price</td>
+				</tr>
+				<tr>
+					<td class="product-cart">
+						<img src="<%= cart.image %>">
+						<div class="details-cart">
+							<h5 class="product-name-cart"><%= cart.name %></h5>
+						</div>
+					</td>
+					<td class="qty-cart pQty"><%= cart.qty %></td>
+					<td class="price-cart pPrice"><%= cart.price%></td>
+				</tr>
+			</table>
+		</div>
+
+			<div class="total">
+				<button class="CK">CHECKOUT</button>
+				<h4 class="or">OR</h4>
+				<button class="paypal">CHECK OUT WITH<img src="/images/iconfinder__Paypal-39_1156727 (1).png"></i></button>
+				<hr>
+				<h3>ORDER SUMMARY</h3>
+				<div class="subtotal">
+					<label>SUBTOTAL</label>
+					<p></p>
+				</div>
+				<div class="sCharge">
+					<label>SHIPPING CHARGE</label>
+					<p>free</p>
+				</div>
+				<hr>
+				<div class="finalPrice">
+					<label>ORDER TOTAL</label>
+					<p></p>
+				</div>
+			</div>
+
+	</div>
+
+<%- include("partials/footer") %>

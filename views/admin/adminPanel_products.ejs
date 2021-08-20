@@ -1,0 +1,321 @@
+<%- include("../partials/header") %>
+
+	<div class="menu">
+		<ul class="options">
+			<li class="selected"><a href="/manage-site/<%= currentUser._id %>">Products</a></li>
+			<li><a href="/manage-site/<%= currentUser._id %>/users">Users</a></li>
+		</ul>
+		<div class="show">
+			<h1>
+				Products
+			</h1>
+			<table style="border: 1px black solid; margin: 10px; width: 97%;">
+				<h1>
+					Men
+				</h1>
+				<thead>
+					<tr>
+						<th class="head">S.no</th>
+						<th class="head">Name</th>
+						<th class="head">Category</th>
+						<th class="head">Image</th>
+						<th class="head">Price</th>
+						<th class="head">Stock</th>
+						<th class="head">Description</th>
+						<th class="head">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% var i = 0; %>
+					<% product.forEach(function(product){ %>
+						<% if(product.category == 'men'){ i++;%>
+							<tr>
+								<td class="tail">
+									<%= i %>
+								</td>
+								<td class="tail">
+									<%= product.name %>
+								</td>
+								<td class="tail">
+									<%= product.category %>
+								</td>
+								<td class="tail">
+									<img src="<%= product.image %>">
+								</td>
+								<td class="tail">
+									₹<%= product.price %>
+								</td>
+								<td class="tail">
+									<%= product.stock %>
+								</td>
+								<td class="tail">
+									<%= product.description %>
+								</td>
+								<td class="tail">
+									<a href="/manage-site/<%= currentUser._id %>/<%= product._id %>/edit"><i class="fas fa-edit ti"></i></a>
+									<a href="/manage-site/<%= currentUser._id %>/<%= product._id %>/delete"><i class="fas fa-trash-alt ti"></i></a>
+								</td>
+							</tr>
+						<% } %>
+					<% }) %>
+				</tbody>
+			</table>
+			<table style="border: 1px black solid; margin: 10px; width: 97%;">
+				<h1>
+					Women
+				</h1>
+				<thead>
+					<tr>
+						<th class="head">S.no</th>
+						<th class="head">Name</th>
+						<th class="head">Category</th>
+						<th class="head">Image</th>
+						<th class="head">Price</th>
+						<th class="head">Stock</th>
+						<th class="head">Description</th>
+						<th class="head">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% var i = 0; %>
+					<% product.forEach(function(product){ %>
+						<% if(product.category == 'women'){ i++;%>
+							<tr>
+								<td class="tail">
+									<%= i %>
+								</td>
+								<td class="tail">
+									<%= product.name %>
+								</td>
+								<td class="tail">
+									<%= product.category %>
+								</td>
+								<td class="tail">
+									<img src="<%= product.image %>">
+								</td>
+								<td class="tail">
+									₹<%= product.price %>
+								</td>
+								<td class="tail">
+									<%= product.stock %>
+								</td>
+								<td class="tail">
+									<%= product.description %>
+								</td>
+								<td class="tail">
+									<a href="/manage-site/<%= currentUser._id %>/<%= product._id %>/edit"><i class="fas fa-edit ti"></i></a>
+									<a href="/manage-site/<%= currentUser._id %>/<%= product._id %>/delete"><i class="fas fa-trash-alt ti"></i></a>
+								</td>
+							</tr>
+						<% } %>
+					<% }) %>
+				</tbody>
+			</table>
+			<table style="border: 1px black solid; margin: 10px; width: 97%;">
+				<h1>
+					Grocery
+				</h1>
+				<thead>
+					<tr>
+						<th class="head">S.no</th>
+						<th class="head">Name</th>
+						<th class="head">Category</th>
+						<th class="head">Image</th>
+						<th class="head">Price</th>
+						<th class="head">Stock</th>
+						<th class="head">Description</th>
+						<th class="head">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% var i = 0; %>
+					<% product.forEach(function(product){ %>
+						<% if(product.category == 'grocery'){ i++;%>
+							<tr>
+								<td class="tail">
+									<%= i %>
+								</td>
+								<td class="tail">
+									<%= product.name %>
+								</td>
+								<td class="tail">
+									<%= product.category %>
+								</td>
+								<td class="tail">
+									<img src="<%= product.image %>">
+								</td>
+								<td class="tail">
+									₹<%= product.price %>
+								</td>
+								<td class="tail">
+									<%= product.stock %>
+								</td>
+								<td class="tail">
+									<%= product.description %>
+								</td>
+								<td class="tail">
+									<a href="/manage-site/<%= currentUser._id %>/<%= product._id %>/edit"><i class="fas fa-edit ti"></i></a>
+									<a href="/manage-site/<%= currentUser._id %>/<%= product._id %>/delete"><i class="fas fa-trash-alt ti"></i></a>
+								</td>
+							</tr>
+						<% } %>
+					<% }) %>
+				</tbody>
+			</table>
+			<table style="border: 1px black solid; margin: 10px; width: 97%;">
+				<h1>
+					Stationery
+				</h1>
+				<thead>
+					<tr>
+						<th class="head">S.no</th>
+						<th class="head">Name</th>
+						<th class="head">Category</th>
+						<th class="head">Image</th>
+						<th class="head">Price</th>
+						<th class="head">Stock</th>
+						<th class="head">Description</th>
+						<th class="head">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% var i = 0; %>
+					<% product.forEach(function(product){ %>
+						<% if(product.category == 'stationery'){ i++;%>
+							<tr>
+								<td class="tail">
+									<%= i %>
+								</td>
+								<td class="tail">
+									<%= product.name %>
+								</td>
+								<td class="tail">
+									<%= product.category %>
+								</td>
+								<td class="tail">
+									<img src="<%= product.image %>">
+								</td>
+								<td class="tail">
+									₹<%= product.price %>
+								</td>
+								<td class="tail">
+									<%= product.stock %>
+								</td>
+								<td class="tail">
+									<%= product.description %>
+								</td>
+								<td class="tail">
+									<a href="/manage-site/<%= currentUser._id %>/<%= product._id %>/edit"><i class="fas fa-edit ti"></i></a>
+									<a href="/manage-site/<%= currentUser._id %>/<%= product._id %>/delete"><i class="fas fa-trash-alt ti"></i></a>
+								</td>
+							</tr>
+						<% } %>
+					<% }) %>
+				</tbody>
+			</table>
+			<table style="border: 1px black solid; margin: 10px; width: 97%;">
+				<h1>
+					Used Products
+				</h1>
+				<thead>
+					<tr>
+						<th class="head">S.no</th>
+						<th class="head">Name</th>
+						<th class="head">Category</th>
+						<th class="head">Image</th>
+						<th class="head">Price</th>
+						<th class="head">Stock</th>
+						<th class="head">Description</th>
+						<th class="head">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% var i = 0; %>
+					<% product.forEach(function(product){ %>
+						<% if(product.category == 'used'){ i++;%>
+							<tr>
+								<td class="tail">
+									<%= i %>
+								</td>
+								<td class="tail">
+									<%= product.name %>
+								</td>
+								<td class="tail">
+									<%= product.category %>
+								</td>
+								<td class="tail">
+									<img src="<%= product.image %>">
+								</td>
+								<td class="tail">
+									₹<%= product.price %>
+								</td>
+								<td class="tail">
+									<%= product.stock %>
+								</td>
+								<td class="tail">
+									<%= product.description %>
+								</td>
+								<td class="tail">
+									<a href="/manage-site/<%= currentUser._id %>/<%= product._id %>/edit"><i class="fas fa-edit ti"></i></a>
+									<a href="/manage-site/<%= currentUser._id %>/<%= product._id %>/delete"><i class="fas fa-trash-alt ti"></i></a>
+								</td>
+							</tr>
+						<% } %>
+					<% }) %>
+				</tbody>
+			</table>
+			<table style="border: 1px black solid; margin: 10px; width: 97%;">
+				<h1>
+					Rent
+				</h1>
+				<thead>
+					<tr>
+						<th class="head">S.no</th>
+						<th class="head">Name</th>
+						<th class="head">Category</th>
+						<th class="head">Image</th>
+						<th class="head">Price</th>
+						<th class="head">Stock</th>
+						<th class="head">Description</th>
+						<th class="head">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% var i = 0; %>
+					<% product.forEach(function(product){ %>
+						<% if(product.category == 'rent'){ i++;%>
+							<tr>
+								<td class="tail">
+									<%= i %>
+								</td>
+								<td class="tail">
+									<%= product.name %>
+								</td>
+								<td class="tail">
+									<%= product.category %>
+								</td>
+								<td class="tail">
+									<img src="<%= product.image %>">
+								</td>
+								<td class="tail">
+									₹<%= product.price %>
+								</td>
+								<td class="tail">
+									<%= product.stock %>
+								</td>
+								<td class="tail">
+									<%= product.description %>
+								</td>
+								<td class="tail">
+									<a href="/manage-site/<%= currentUser._id %>/<%= product._id %>/edit"><i class="fas fa-edit ti"></i></a>
+									<a href="/manage-site/<%= currentUser._id %>/<%= product._id %>/delete"><i class="fas fa-trash-alt ti"></i></a>
+								</td>
+							</tr>
+						<% } %>
+					<% }) %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+<%- include("../partials/footer") %>

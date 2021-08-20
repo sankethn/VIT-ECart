@@ -1,0 +1,26 @@
+<%- include("../partials/header") %>
+
+	<div class="menu">
+		<ul class="options">
+			<li class="selected"><a href="/manage-account/<%= currentUser._id %>">Account</a></li>
+			<li><a href="/manage-account/<%= currentUser._id %>/orders">Orders History</a></li>
+		</ul>
+		<div class="show">
+			<h1>My Profile <a href="/manage-account/<%= currentUser._id %>/edit"><i class="fas fa-edit"></i></a></h1>
+			<div class="info-block">
+				<p class="info-head">User ID</p>
+				<p class="info"><%= currentUser._id %></p>
+			
+				<p class="info-head">Username</p>
+				<p class="info"><%= currentUser.username %></p>
+			
+				<p class="info-head">Email</p>
+				<p class="info"><%= currentUser.email %></p>
+			
+				<p class="info-head">Contact Number</p>
+				<p class="info"><%= currentUser.phNumber %></p>
+			</div>
+		</div>
+	</div>
+
+<%- include("../partials/footer") %>
